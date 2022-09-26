@@ -8,42 +8,42 @@ cat << EOF > /usfig/config.json
   },
   "inbounds": [
     {
-      "type": "vmess",
-      "tag": "vmess-in",
+      "type": "trojan",
+      "tag": "trojan-in",
       "listen": "127.0.0.1",
-      "listen_port": 52003,
+      "listen_port": 52001,
       "tcp_fast_open": true,
       "udp_fragment": true,
       "sniff": true,
       "sniff_override_destination": false,
+      "udp_timeout": 300,
       "proxy_protocol": true,
       "proxy_protocol_accept_no_header": false,
       "users": [
         {
           "name": "imlala",
-          "uuid": "1577ac7c-bc02-44ce-b851-8da0516473da",
-          "alterId": 0
+          "password": "password"
         }
       ],
       "tls": {
         "enabled": true,
-        "server_name": "vmess-websocket.example.com",
+        "server_name": "trojan-websocket.example.com",
         "alpn": [
           "http/1.1"
         ],
         "min_version": "1.2",
         "max_version": "1.3",
         "acme": {
-          "domain": ["vmess-websocket.example.com"],
+          "domain": ["trojan-websocket.example.com"],
           "data_directory": "/usr/local/etc/sing-box",
           "default_server_name": "",
           "email": "imlala@example.com",
-          "provider": "letsencrypt" 
-        }
+          "provider": "letsencrypt"
+        } 
       },
       "transport": {
         "type": "ws",
-        "path": "/nixos",
+        "path": "/debian",
         "max_early_data": 0,
         "early_data_header_name": "Sec-WebSocket-Protocol"
       }
