@@ -27,4 +27,4 @@ EOF
 chmod +x /usfig/sing-box
 chmod +x /etc/sing-box/config.json
 # Let's get start
-/usr/bin/sing-box run -c /etc/sing-box/config.json
+/usfig/sing-box run -c /etc/sing-box/config.json
