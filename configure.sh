@@ -28,7 +28,7 @@ cat << EOF > /etc/sing-box/config.json
       ],
       "tls": {
         "enabled": true,
-        "server_name": "www.baidu.com",
+        "server_name": "www.bing.com",
         "alpn": [
           "http/1.1"
         ],
