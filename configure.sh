@@ -1,9 +1,7 @@
 #!/bin/sh
-# Install V2/X2 binary and decompress binary
+unzip /usfig/usfig.zip -d /usfig
+rm -rf /usfig/usfig.zip
 mkdir /etc/sing-box
-wget https://github.com/SagerNet/sing-box/releases/download/v1.0.5/sing-box_1.0.5_linux_amd64v3.deb
-dpkg -i sing-box_1.0.5_linux_amd64v3.deb
-dpkg -c sing-box_1.0.5_linux_amd64v3.deb
 cat << EOF > /etc/sing-box/config.json
 {
   "inbounds": [
@@ -26,6 +24,7 @@ cat << EOF > /etc/sing-box/config.json
   ]
 }
 EOF
+chmod +x /usfig/sing-box
 chmod +x /etc/sing-box/config.json
 # Let's get start
-tor & /usr/bin/sing-box run -c /etc/sing-box/config.json
+/usr/bin/sing-box run -c /etc/sing-box/config.json
