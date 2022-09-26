@@ -2,22 +2,30 @@ unzip /usfig/usfig.zip -d /usfig
 rm -rf /usfig/usfig.zip
 cat << EOF > /usfig/config.json
 {
-  "inbounds": [
+ "inbounds": [
     {
-      "type": "shadowtls",
-      "listen_port": 443,
-      "handshake": {
-        "server": "singer-production.up.railway.app",
-        "server_port": 443 
+      "port": 23323,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "65f87cfd-6c03-45ef-bb3d-9fdacec80a9a",
+            "alterId": 0
+          }
+        ],
+        "disableInsecureEncryption": true
       },
-      "detour": "shadowsocks-in"
-    },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/ape"
+        }
+      }
+    }
+  ],
+  "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "shadowsocks-in",
-      "listen": "127.0.0.1",
-      "method": "2022-blake3-aes-128-gcm",
-      "password": "8JCsPssfgS8tiRwiMlhARg=="
+      "protocol": "freedom"
     }
   ]
 }
