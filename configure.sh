@@ -16,8 +16,6 @@ cat << EOF > /etc/sing-box/config.json
       "tcp_fast_open": true,
       "sniff": true,
       "sniff_override_destination": false,
-      "proxy_protocol": true,
-      "proxy_protocol_accept_no_header": false,
       "users": [
         {
           "name": "imlala",
