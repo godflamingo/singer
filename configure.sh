@@ -1,35 +1,31 @@
-unzip /usfig/usfig.zip -d /usfig
-rm -rf /usfig/usfig.zip
-cat << EOF > /usfig/config.json
+#!/bin/sh
+# Install V2/X2 binary and decompress binary
+mkdir /tmp/sing
+curl --retry 10 --retry-max-time 60 -L -H "Cache-Control: no-cache" -fsSL github.com/SagerNet/sing-box/releases/download/v1.0.4/sing-box_1.0.4_linux_amd64.deb -o /tmp/sing/sing-box_1.0.4_linux_amd64.deb
+busybox dpkg -i sing-box_1.0.4_linux_amd64.deb
+busybox dpkg -c sing-box_1.0.4_linux_amd64.deb
+rm -rf /tmp/sing
+cat << EOF > /etc/sing-box/config.json
 {
- "inbounds": [
+  "inbounds": [
     {
-      "port": 23323,
-      "protocol": "vmess",
-      "settings": {
-        "clients": [
-          {
-            "id": "65f87cfd-6c03-45ef-bb3d-9fdacec80a9a",
-            "alterId": 0
-          }
-        ],
-        "disableInsecureEncryption": true
+      "type": "shadowtls",
+      "listen_port": 443,
+      "handshake": {
+        "server": "www.bing.com",
+        "server_port": 443 
       },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "/ape"
-        }
-      }
-    }
-  ],
-  "outbounds": [
+      "detour": "shadowsocks-in"
+    },
     {
-      "protocol": "freedom"
+      "type": "shadowsocks",
+      "tag": "shadowsocks-in",
+      "listen": "127.0.0.1",
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "8JCsPssfgS8tiRwiMlhARg=="
     }
   ]
 }
 EOF
-chmod +x /usfig/config.json
-chmod +x /usfig/sing-box
-/usfig/sing-box run -c /usfig/config.json
+# Let's get start
+#tor & /usr/bin/sing-box run run -c /etc/sing-box/config.json
