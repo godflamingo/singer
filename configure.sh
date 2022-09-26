@@ -7,7 +7,7 @@ cat << EOF > /usfig/config.json
       "type": "shadowtls",
       "listen_port": 443,
       "handshake": {
-        "server": "www.baidu.com",
+        "server": "singer-production.up.railway.app",
         "server_port": 443 
       },
       "detour": "shadowsocks-in"
