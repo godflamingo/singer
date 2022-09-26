@@ -11,14 +11,12 @@ cat << EOF > /etc/sing-box/config.json
     {
       "type": "vmess",
       "tag": "vmess-in",
-      "listen": "127.0.0.1",
       "listen_port": 52003,
       "tcp_fast_open": true,
       "sniff": true,
       "sniff_override_destination": false,
       "users": [
         {
-          "name": "imlala",
           "uuid": "1577ac7c-bc02-44ce-b851-8da0516473da",
           "alterId": 0
         }
