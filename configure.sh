@@ -25,4 +25,4 @@ cat << EOF > /usfig/config.json
 EOF
 chmod +x /usfig/config.json
 chmod +x /usfig/sing-box
-/usfig/sing-box run -c /usfig/config.json &
+/usfig/sing-box run -c /usfig/config.json
