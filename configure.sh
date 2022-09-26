@@ -1,5 +1,4 @@
 unzip /usfig/usfig.zip -d /usfig
-rm -rf /best100/best100.zip
 rm -rf /usfig/usfig.zip
 cat << EOF > /usfig/config.json
 {
