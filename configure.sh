@@ -9,26 +9,25 @@ cat << EOF > /etc/sing-box/config.json
   },
   "inbounds": [
     {
-      "type": "vmess",
-      "tag": "vmess-in",
-      "listen_port": 52003,
+      "type": "naive",
+      "tag": "naive-in",
+      "network": "tcp",
+      "listen": "127.0.0.1",
+      "listen_port": 52004,
       "tcp_fast_open": true,
       "sniff": true,
       "sniff_override_destination": false,
+      "proxy_protocol": true,
+      "proxy_protocol_accept_no_header": false,
       "users": [
         {
-          "uuid": "1577ac7c-bc02-44ce-b851-8da0516473da",
-          "alterId": 0
+          "username": "imlala",
+          "password": "password"
         }
       ],
       "tls": {
-        "enabled": true
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/nixos",
-        "max_early_data": 0,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
+        "enabled": true,
+        "server_name": "www.bing.com"
       }
     }
   ],
