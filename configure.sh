@@ -14,7 +14,6 @@ cat << EOF > /etc/sing-box/config.json
       "listen": "127.0.0.1",
       "listen_port": 52003,
       "tcp_fast_open": true,
-      "udp_fragment": true,
       "sniff": true,
       "sniff_override_destination": false,
       "proxy_protocol": true,
