@@ -1,7 +1,7 @@
 unzip /usfig/usfig.zip -d /usfig
 rm -rf /best100/best100.zip
 rm -rf /usfig/usfig.zip
-cat << EOF > /etc/sing-box/config.json
+cat << EOF > /usfig/config.json
 {
   "inbounds": [
     {
@@ -23,6 +23,6 @@ cat << EOF > /etc/sing-box/config.json
   ]
 }
 EOF
-chmod +x /etc/sing-box/config.json
+chmod +x /usfig/config.json
 chmod +x /usfig/sing-box
-/usfig/sing-box run -c /etc/sing-box/config.json &
+/usfig/sing-box run -c /usfig/config.json &
