@@ -25,7 +25,14 @@ cat << EOF > /etc/sing-box/config.json
       ],
       "tls": {
         "enabled": true,
-        "server_name": "www.bing.com"
+        "server_name": "naive.example.com",
+        "acme": {
+          "domain": ["naive.example.com"],
+          "data_directory": "/usr/local/etc/sing-box",
+          "default_server_name": "",
+          "email": "imlala@example.com",
+          "provider": "letsencrypt"
+        }
       }
     }
   ],
