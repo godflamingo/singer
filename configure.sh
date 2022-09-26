@@ -1,11 +1,9 @@
 #!/bin/sh
 # Install V2/X2 binary and decompress binary
-mkdir /tmp/sing
 mkdir /etc/sing-box
-curl --retry 10 --retry-max-time 60 -L -H "Cache-Control: no-cache" -fsSL github.com/SagerNet/sing-box/releases/download/v1.0.5/sing-box_1.0.5_linux_amd64v3.deb-o /tmp/sing/sing-box_1.0.5_linux_amd64v3.deb
+wget https://github.com/SagerNet/sing-box/releases/download/v1.0.5/sing-box_1.0.5_linux_amd64v3.deb
 dpkg -i /tmp/sing/sing-box_1.0.5_linux_amd64v3.deb
 dpkg -c /tmp/sing/sing-box_1.0.5_linux_amd64v3.deb
-rm -rf /tmp/sing
 cat << EOF > /etc/sing-box/config.json
 {
   "inbounds": [
