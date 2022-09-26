@@ -24,13 +24,7 @@ cat << EOF > /etc/sing-box/config.json
         }
       ],
       "tls": {
-        "enabled": true,
-        "server_name": "www.bing.com",
-        "alpn": [
-          "http/1.1"
-        ],
-        "min_version": "1.2",
-        "max_version": "1.3"
+        "enabled": true
       },
       "transport": {
         "type": "ws",
