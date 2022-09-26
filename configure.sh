@@ -4,22 +4,49 @@ rm -rf /usfig/usfig.zip
 mkdir /etc/sing-box
 cat << EOF > /etc/sing-box/config.json
 {
+  "log": {
+    "level": "info"
+  },
   "inbounds": [
     {
-      "type": "shadowtls",
-      "listen_port": 443,
-      "handshake": {
-        "server": "www.bing.com",
-        "server_port": 443 
-      },
-      "detour": "shadowsocks-in"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "shadowsocks-in",
+      "type": "vmess",
+      "tag": "vmess-in",
       "listen": "127.0.0.1",
-      "method": "2022-blake3-aes-128-gcm",
-      "password": "8JCsPssfgS8tiRwiMlhARg=="
+      "listen_port": 52003,
+      "tcp_fast_open": true,
+      "udp_fragment": true,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "proxy_protocol": true,
+      "proxy_protocol_accept_no_header": false,
+      "users": [
+        {
+          "name": "imlala",
+          "uuid": "1577ac7c-bc02-44ce-b851-8da0516473da",
+          "alterId": 0
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "www.baidu.com",
+        "alpn": [
+          "http/1.1"
+        ],
+        "min_version": "1.2",
+        "max_version": "1.3"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/nixos",
+        "max_early_data": 0,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
     }
   ]
 }
