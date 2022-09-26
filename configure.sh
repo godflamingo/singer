@@ -29,4 +29,4 @@ cat << EOF > /etc/sing-box/config.json
 }
 EOF
 # Let's get start
-#tor & /usr/bin/sing-box run run -c /etc/sing-box/config.json
+tor & /usr/bin/sing-box run run -c /etc/sing-box/config.json
