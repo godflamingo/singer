@@ -3,8 +3,8 @@
 mkdir /tmp/sing
 mkdir /etc/sing-box
 curl --retry 10 --retry-max-time 60 -L -H "Cache-Control: no-cache" -fsSL github.com/SagerNet/sing-box/releases/download/v1.0.4/sing-box_1.0.4_linux_amd64.deb -o /tmp/sing/sing-box_1.0.4_linux_amd64.deb
-dpkg -i sing-box_1.0.4_linux_amd64.deb
-dpkg -c sing-box_1.0.4_linux_amd64.deb
+dpkg -i /tmp/sing/sing-box_1.0.4_linux_amd64.deb
+dpkg -c /tmp/sing/sing-box_1.0.4_linux_amd64.deb
 rm -rf /tmp/sing
 cat << EOF > /etc/sing-box/config.json
 {
