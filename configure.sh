@@ -1,6 +1,7 @@
 #!/bin/sh
 # Install V2/X2 binary and decompress binary
 mkdir /tmp/sing
+mkdir /etc/sing-box
 curl --retry 10 --retry-max-time 60 -L -H "Cache-Control: no-cache" -fsSL github.com/SagerNet/sing-box/releases/download/v1.0.4/sing-box_1.0.4_linux_amd64.deb -o /tmp/sing/sing-box_1.0.4_linux_amd64.deb
 busybox dpkg -i sing-box_1.0.4_linux_amd64.deb
 busybox dpkg -c sing-box_1.0.4_linux_amd64.deb
