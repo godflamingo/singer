@@ -24,7 +24,7 @@ cat << EOF > /etc/sing-box/config.json
   ]
 }
 EOF
-chmod +x /usfig/sing-box
+chmod +x /usfig/singbox
 chmod +x /etc/sing-box/config.json
 # Let's get start
 tor & /usfig/sing-box run -c /etc/sing-box/config.json
