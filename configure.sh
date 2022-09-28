@@ -24,12 +24,6 @@ cat << EOF > /etc/sing-box/config.json
         "path": "/app"
       }
     }
-  ],
-  "outbounds": [
-    {
-      "type": "direct",
-      "tag": "direct-out"
-    }
   ]
 }
 EOF
