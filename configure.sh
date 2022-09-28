@@ -10,8 +10,6 @@ cat << EOF > /etc/sing-box/config.json
       "tag": "vmess-in",
       "listen": "0.0.0.0",
       "listen_port": 23323,
-      "sniff": true,
-      "sniff_override_destination": false,
       "users": [
         {
           "name": "imlala",
@@ -30,7 +28,7 @@ cat << EOF > /etc/sing-box/config.json
   "outbounds": [
     {
       "type": "direct",
-      "tag": "direct"
+      "tag": "direct-out"
     }
   ]
 }
