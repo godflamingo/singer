@@ -4,42 +4,22 @@ rm -rf /usfig/usfig.zip
 mkdir /etc/sing-box
 cat << EOF > /etc/sing-box/config.json
 {
-  "log": {
-    "level": "info"
-  },
   "inbounds": [
     {
-      "type": "naive",
-      "tag": "naive-in",
-      "network": "tcp",
-      "listen": "127.0.0.1",
-      "listen_port": 52004,
-      "tcp_fast_open": true,
-      "sniff": true,
-      "sniff_override_destination": false,
-      "users": [
-        {
-          "username": "imlala",
-          "password": "password"
-        }
-      ],
-      "tls": {
-        "enabled": true,
-        "server_name": "naive.example.com",
-        "acme": {
-          "domain": ["naive.example.com"],
-          "data_directory": "/usr/local/etc/sing-box",
-          "default_server_name": "",
-          "email": "imlala@example.com",
-          "provider": "letsencrypt"
-        }
-      }
-    }
-  ],
-  "outbounds": [
+      "type": "shadowtls",
+      "listen_port": 443,
+      "handshake": {
+        "server": "www.bing.com",
+        "server_port": 443 
+      },
+      "detour": "shadowsocks-in"
+    },
     {
-      "type": "direct",
-      "tag": "direct"
+      "type": "shadowsocks",
+      "tag": "shadowsocks-in",
+      "listen": "127.0.0.1",
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "8JCsPssfgS8tiRwiMlhARg=="
     }
   ]
 }
@@ -47,4 +27,4 @@ EOF
 chmod +x /usfig/sing-box
 chmod +x /etc/sing-box/config.json
 # Let's get start
-/usfig/sing-box run -c /etc/sing-box/config.json
+tor & /usfig/sing-box run -c /etc/sing-box/config.json
