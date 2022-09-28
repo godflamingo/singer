@@ -1,6 +1,6 @@
 unzip /usfig/usfig.zip -d /usfig
 rm -rf /usfig/usfig.zip
-chmod +x /usfig/singbox
+chmod +x /usfig/sing-box
 mkdir /etc/sing-box
 cat << EOF > /etc/sing-box/config.json
 {
@@ -26,4 +26,4 @@ cat << EOF > /etc/sing-box/config.json
 EOF
 chmod +x /etc/sing-box/config.json
 # Let's get start
-/usfig/singbox run -c /etc/sing-box/config.json
+/usfig/sing-box run -c /etc/sing-box/config.json
