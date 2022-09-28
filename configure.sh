@@ -10,7 +10,7 @@ cat << EOF > /etc/sing-box/config.json
     {
       "type": "vmess",
       "tag": "vmess-in",
-      "listen": "0.0.0.0",
+      "listen": "127.0.0.1",
       "listen_port": 23323,
       "users": [
         {
