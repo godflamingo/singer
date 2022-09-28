@@ -12,6 +12,9 @@ cat << EOF > /etc/sing-box/config.json
       "tag": "vmess-in",
       "listen": "127.0.0.1",
       "listen_port": 23323,
+      "tcp_fast_open": true,
+      "sniff": true,
+      "sniff_override_destination": false,
       "users": [
         {
           "name": "imlala",
@@ -20,6 +23,7 @@ cat << EOF > /etc/sing-box/config.json
         }
       ],
       "tls": {},
+      "set_system_proxy": false,
       "transport": {
         "type": "ws",
         "path": "/app"
