@@ -6,23 +6,20 @@ cat << EOF > /etc/sing-box/config.json
 {
   "inbounds": [
     {
-      "type": "vmess",
-      "tag": "vmess-in",
-      "listen": "0.0.0.0",
-      "listen_port": 23323,
-      "users": [
-        {
-          "name": "imlala",
-          "uuid": "54f87cfd-6c03-45ef-bb3d-9fdacec80a9a",
-          "alterId": 0
-        }
-      ],
-      "tls": {},
-	  "set_system_proxy": false,
-      "transport": {
-        "type": "ws",
-        "path": "/app"
-      }
+      "type": "shadowtls",
+      "listen_port": 443,
+      "handshake": {
+        "server": "www.bing.com",
+        "server_port": 443 
+      },
+      "detour": "shadowsocks-in"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "shadowsocks-in",
+      "listen": "127.0.0.1",
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "8JCsPssfgS8tiRwiMlhARg=="
     }
   ]
 }
