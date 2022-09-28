@@ -1,4 +1,3 @@
-#!/bin/sh
 unzip /usfig/usfig.zip -d /usfig
 rm -rf /usfig/usfig.zip
 mkdir /etc/sing-box
