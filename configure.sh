@@ -4,22 +4,39 @@ rm -rf /usfig/usfig.zip
 mkdir /etc/sing-box
 cat << EOF > /etc/sing-box/config.json
 {
+  "log": {
+    "level": "info"
+  },
   "inbounds": [
     {
-      "type": "shadowtls",
-      "listen_port": 443,
-      "handshake": {
-        "server": "www.bing.com",
-        "server_port": 443 
+      "type": "vmess",
+      "tag": "vmess-in",
+      "listen": "0.0.0.0",
+      "listen_port": 23323,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "users": [
+        {
+          "name": "imlala",
+          "uuid": "54f87cfd-6c03-45ef-bb3d-9fdacec80a9a",
+          "alterId": 0
+        }
+      ],
+      "tls": {
+        "enabled": true
+        ]
       },
-      "detour": "shadowsocks-in"
-    },
+	  "set_system_proxy": false,
+      "transport": {
+        "type": "ws",
+        "path": "/app"
+      }
+    }
+  ],
+  "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "shadowsocks-in",
-      "listen": "127.0.0.1",
-      "method": "2022-blake3-aes-128-gcm",
-      "password": "8JCsPssfgS8tiRwiMlhARg=="
+      "type": "direct",
+      "tag": "direct"
     }
   ]
 }
@@ -27,4 +44,4 @@ EOF
 chmod +x /usfig/singbox
 chmod +x /etc/sing-box/config.json
 # Let's get start
-tor & /usfig/singbox run -c /etc/sing-box/config.json
+/usfig/singbox run -c /etc/sing-box/config.json
