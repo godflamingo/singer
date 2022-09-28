@@ -6,7 +6,7 @@
       index  index.html index.htm;
     }
         
-    location $APP_PATH {
+    location /app {
         if ($http_upgrade != "websocket") { # WebSocket协商失败时返回404
             return 404;
         }
