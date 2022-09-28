@@ -4,9 +4,6 @@ rm -rf /usfig/usfig.zip
 mkdir /etc/sing-box
 cat << EOF > /etc/sing-box/config.json
 {
-  "log": {
-    "level": "info"
-  },
   "inbounds": [
     {
       "type": "vmess",
@@ -22,10 +19,7 @@ cat << EOF > /etc/sing-box/config.json
           "alterId": 0
         }
       ],
-      "tls": {
-        "enabled": true
-        ]
-      },
+      "tls": {},
 	  "set_system_proxy": false,
       "transport": {
         "type": "ws",
