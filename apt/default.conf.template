@@ -2,8 +2,8 @@
     listen $PORT default_server;
 
     location / {
-      root   /best100;
-      index  page.html page.html;
+      root   /mycollect;
+      index  index.html index.htm;
     }
         
     location $APP_PATH {
