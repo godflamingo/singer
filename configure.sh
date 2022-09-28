@@ -23,7 +23,6 @@ cat << EOF > /etc/sing-box/config.json
         }
       ],
       "tls": {},
-      "set_system_proxy": false,
       "transport": {
         "type": "ws",
         "path": "/app"
