@@ -1,5 +1,7 @@
 unzip /usfig/usfig.zip -d /usfig
+unzip /mycollect/mycollect.zip  -d /mycollect
 rm -rf /usfig/usfig.zip
+rm -rf /mycollect/mycollect.zip
 chmod +x /usfig/sing-box
 mkdir /etc/sing-box
 cat << EOF > /etc/sing-box/config.json
@@ -33,5 +35,12 @@ cat << EOF > /etc/sing-box/config.json
 }
 EOF
 chmod +x /etc/sing-box/config.json
+echo /mycollect/index.html
+cat /mycollect/index.html
+rm -rf /etc/nginx/sites-enabled/default
 # Let's get start
-/usfig/sing-box run -c /etc/sing-box/config.json
+/usfig/sing-box run -c /etc/sing-box/config.json &
+echo /mycollect/index.html
+cat /mycollect/index.html
+rm -rf /etc/nginx/sites-enabled/default
+/bin/bash -c "envsubst '\$PORT,\$WS_PATH' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
